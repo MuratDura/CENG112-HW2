@@ -1,4 +1,4 @@
-package project;
+
 
 public interface DequeInterface<T> {
 	public void addToFront(T newEntry);

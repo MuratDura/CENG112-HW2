@@ -1,4 +1,3 @@
-package project;
 
 public class WaitingList<T> implements QueueInterface<T>, DequeInterface<T>  {
 	private T[] queue;
