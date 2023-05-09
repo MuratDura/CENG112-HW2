@@ -1,10 +1,12 @@
-package project;
+
 
 public class WaitingList<T> implements QueueInterface<T>, DequeInterface<T>  {
 	private T[] queue;
 	private int frontIndex;
 	private int backIndex;
 	private static final int MAX_CAPACITY = 10000;
+
+	private int numberOfEntries = 0;
 	
 	public WaitingList(int initialCapacity) {
 		@SuppressWarnings("unchecked")
@@ -26,6 +28,7 @@ public class WaitingList<T> implements QueueInterface<T>, DequeInterface<T>  {
 			frontIndex = (frontIndex-1)%queue.length;
 			queue[frontIndex] = newEntry;
 		}
+		numberOfEntries++;
 	}
 
 	@Override
@@ -33,6 +36,7 @@ public class WaitingList<T> implements QueueInterface<T>, DequeInterface<T>  {
 		ensureCapacity();
 		backIndex = (backIndex+1)%queue.length;
 		queue[backIndex] = newEntry;
+		numberOfEntries++;
 	}
 
 	@Override
@@ -42,6 +46,7 @@ public class WaitingList<T> implements QueueInterface<T>, DequeInterface<T>  {
 			T front = queue[frontIndex];
 			queue[frontIndex] = null;
 			frontIndex = (frontIndex+1)%queue.length;
+			numberOfEntries--;
 			return front;
 		}
 	}
@@ -53,6 +58,7 @@ public class WaitingList<T> implements QueueInterface<T>, DequeInterface<T>  {
 			T back = queue[backIndex];
 			queue[backIndex] = null;
 			backIndex = (backIndex-1)%queue.length;
+			numberOfEntries--;
 			return back;
 		}
 	}
@@ -67,6 +73,7 @@ public class WaitingList<T> implements QueueInterface<T>, DequeInterface<T>  {
 		ensureCapacity();
 		backIndex = (backIndex+1)%queue.length;
 		queue[backIndex] = newEntry;
+		numberOfEntries++;
 	}
 
 	@Override
@@ -76,6 +83,7 @@ public class WaitingList<T> implements QueueInterface<T>, DequeInterface<T>  {
 			T front = queue[frontIndex];
 			queue[frontIndex] = null;
 			frontIndex = (frontIndex+1)%queue.length;
+			numberOfEntries--;
 			return front;
 		}
 	}
@@ -113,6 +121,8 @@ public class WaitingList<T> implements QueueInterface<T>, DequeInterface<T>  {
 			backIndex = oldSize - 2;
 		}
 	}
+
+	public int getLength(){return numberOfEntries;}
 
 	
 

@@ -1,4 +1,4 @@
-package project;
+
 import java.util.Random;
 
 public class Customer {
@@ -27,4 +27,6 @@ public class Customer {
 		qualityThreshold *= 0.9;
 		//qualityThreshold = Math.round(qualityThreshold*100.0)/100.0;
 	}
+
+
 }
