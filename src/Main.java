@@ -65,7 +65,6 @@ public class Main {
                     System.out.println("\t---not accepted by any customer---");
                 }
             }System.out.println("All cars have been seen.");
-            System.out.println(!customerWaitingList.isEmpty());
             keepRenting = !customerWaitingList.isEmpty();
             if (!keepRenting) {
                 System.out.println("All customers rented a car.");
@@ -74,7 +73,6 @@ public class Main {
                 System.out.println("But there are still customers waiting.");
                 System.out.println("Rented cars: ");
                 for (int i=1; i<=occupiedCars.getLength(); i++) { //the length of occupiedCars list and that of currentRenter list are the same
-                    System.out.println(occupiedCars.getLength());
                     Car occupiedCar = occupiedCars.getEntry(i);
                     Customer renter = currentRenter.getEntry(i);
                     System.out.println(occupiedCar+" by "+renter+" occupancy="+occupiedCar.getLeftDays());}
