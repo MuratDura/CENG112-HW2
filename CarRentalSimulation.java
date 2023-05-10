@@ -1,4 +1,5 @@
 package project;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class CarRentalSimulation {
@@ -66,6 +67,7 @@ public class CarRentalSimulation {
 				//for loop to display results at the end of the day and to take care of availability of rented cars 
 				System.out.println("But there are still customers waiting.");
 				System.out.println("Rented cars: ");
+				//System.out.println(Arrays.toString(occupiedCars.toArray()));
 				for (int i=1; i<=occupiedCars.getLength(); i++) { //the length of occupiedCars list and that of currentRenter list are the same
 					Car occupiedCar = occupiedCars.getEntry(i);
 					Customer renter = currentRenter.getEntry(i);
