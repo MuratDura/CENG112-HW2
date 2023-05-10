@@ -1,4 +1,6 @@
+
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -32,7 +34,7 @@ public class Main {
             dayCounter++;
             System.out.println("*******************"+"Day"+dayCounter+"*******************");
             numberOfCars = leftCars;
-            for (int i=1; i <= numberOfCars; i++) {
+            for (int i=1; i <= numberOfCars && !customerWaitingList.isEmpty(); i++) {
                 numberOfRejection = 0;
                 car = carWaitingList.removeFront();
                 System.out.println("Current "+car+" quality="+car.getQualityScore()+" is offering to");
@@ -49,7 +51,7 @@ public class Main {
                                 customer = customerWaitingList.dequeue();
                                 customerWaitingList.enqueue(customer);
                                 numberOfRejection++;
-                        }}
+                            }}
                         leftCustomers--;
                         leftCars--;
                         break;
@@ -75,13 +77,13 @@ public class Main {
                 for (int i=1; i<=occupiedCars.getLength(); i++) { //the length of occupiedCars list and that of currentRenter list are the same
                     Car occupiedCar = occupiedCars.getEntry(i);
                     Customer renter = currentRenter.getEntry(i);
-                    System.out.println(occupiedCar+" by "+renter+" occupancy="+occupiedCar.getLeftDays());}
+                    System.out.println("\t"+occupiedCar+" by "+renter+" occupancy="+occupiedCar.getLeftDays());}
                 if(carWaitingList.getLength()>0){
-                System.out.println("Available cars:");
+                    System.out.println("Available cars:");
                     for (int i =1; i<= carWaitingList.getLength();i++){
-                        Car CAR = carWaitingList.removeFront();
-                        carWaitingList.addToBack(CAR);
-                        System.out.println("\t\t"+CAR);
+                        Car availableCar = carWaitingList.removeFront();
+                        carWaitingList.addToBack(availableCar);
+                        System.out.println("\t"+availableCar);
                     }}
                 for (int i=1; i<=occupiedCars.getLength(); i++){
                     Car occupiedCar = occupiedCars.getEntry(i);
@@ -89,6 +91,7 @@ public class Main {
                     if (occupiedCar.getLeftDays() == 0) {
                         occupiedCars.remove(i);
                         currentRenter.remove(i);
+                        i--;
                         carWaitingList.addToFront(occupiedCar);
                         leftCars++;
                     }}
