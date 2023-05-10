@@ -9,4 +9,5 @@ public interface DequeInterface<T> {
 	public T getBack();
 	public boolean isEmpty();
 	public void clear();
+	public  int getLength();
 }

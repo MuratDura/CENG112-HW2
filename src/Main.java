@@ -76,6 +76,13 @@ public class Main {
                     Car occupiedCar = occupiedCars.getEntry(i);
                     Customer renter = currentRenter.getEntry(i);
                     System.out.println(occupiedCar+" by "+renter+" occupancy="+occupiedCar.getLeftDays());}
+                if(carWaitingList.getLength()>0){
+                System.out.println("Available cars:");
+                    for (int i =1; i<= carWaitingList.getLength();i++){
+                        Car CAR = carWaitingList.removeFront();
+                        carWaitingList.addToBack(CAR);
+                        System.out.println("\t\t"+CAR);
+                    }}
                 for (int i=1; i<=occupiedCars.getLength(); i++){
                     Car occupiedCar = occupiedCars.getEntry(i);
                     occupiedCar.decreaseOccupancy();
@@ -85,8 +92,9 @@ public class Main {
                         carWaitingList.addToFront(occupiedCar);
                         leftCars++;
                     }}
-                }System.out.println("*******************"+"End of the Day"+"*******************");
+                System.out.println("*******************"+"End of the Day"+"*******************");
+                System.out.println();
             }
         }
 
-    }
+    }}
